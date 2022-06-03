@@ -7,7 +7,7 @@ import styles from './style';
 const InboxItem = (props:any) => {
     return (
         <TouchableOpacity key={props.id} onPress={() => {
-            props.navigation.navigate('Chatbox', {title: props.name});
+            props.navigation.navigate('Chatbox', {id: props.id, title: props.name});
           }}>
             <View style={styles.item}>
                 <Image style={styles.avatar} source={require('../../assets/images/avt.jpg')}></Image>

@@ -2,18 +2,38 @@ import { SafeAreaView, ScrollView, StyleSheet, Image, StatusBar, TextInput } fro
 import { Text, View } from '../components/Themed';
 import HeaderInbox from '../components/headers/HeaderInbox';
 import InboxItem from '../components/inbox/ItemInbox';
-const arrayData = require('../assets/data/inbox.json');
+import axios from 'axios';
+import { useEffect, useState  } from 'react';
+
 const InboxScreen = (props: any) => {
+  const [list, setList] = useState([]);
+  useEffect(() => {
+    const source = axios.CancelToken.source();
+    const url = 'https://jsonplaceholder.typicode.com/users';
+    const fetchUsers = async () => {
+      try {
+        const response = await axios.get(url, { cancelToken: source.token });
+        setList(response.data);
+      } catch (error) {
+        if(axios.isCancel(error)){
+          console.log('Data fetching cancelled');
+        }else{
+         // Handle error
+        }
+      }
+    };
+    fetchUsers();
+    return () => source.cancel("Data fetching cancelled");
+  },[props, useState]);
   return (
     <SafeAreaView style={styles.container}>
       <HeaderInbox />
       <ScrollView>
         <View style={styles.itemList}>
           {
-            arrayData.map((prop: { id: any; name: any; about: any; }, key: any) => {
-              return (
-                <InboxItem key={key} id={prop.id} name={prop.name} about={prop.about} navigation={props.navigation}/>
-              );
+            list.map((item : any, key: any) =>{
+              console.log(item);
+              return (<InboxItem key={key} id={item.id} name={item.name} about={item.company.catchPhrase} navigation={props.navigation} ></InboxItem>);
             })
           }
         </View>

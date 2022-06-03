@@ -1,15 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { StyleSheet, SafeAreaView, ScrollView } from 'react-native';
 import { Text, View } from '../components/Themed';
 import ChatDetail from '../components/inbox/Form';
 const ChatBoxScreen = (props: any) => {
-    React.useEffect(() => {
-        props.navigation.setOptions({
-            headerSearchBarOptions: {
-                // search bar options
-            }
-        });
-    }, [props.navigation]);
+    useEffect(() =>{
+        console.log(props);
+    }, []);
+    // const { id, title } = props.params;
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView>

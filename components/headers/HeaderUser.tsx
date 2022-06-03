@@ -5,7 +5,7 @@ import { FontAwesome } from '@expo/vector-icons';
 const searchBox = () =>{
     console.log("saerch");
 }
-const HeaderInbox = (props: any) => {
+const HeaderUser = (props: any) => {
     return (
         <View style={styles.header}>
             <TouchableOpacity onPress={searchBox}>
@@ -17,16 +17,13 @@ const HeaderInbox = (props: any) => {
             <TextInput style={styles.inputSearch} placeholder={'Nhập từ khóa...'} />
             <View style={styles.groupIcon}>
                 <View style={{ backgroundColor: 'unset' }}>
-                    <Image source={require('../../assets/icons/qr-code.png')} style={{width: 20, height:20}}></Image>
-                </View>
-                <View style={{ backgroundColor: 'unset', marginLeft: 10 }}>
-                    <Image source={require('../../assets/icons/add.png')} style={{width: 20, height:20}}></Image>
+                    <Image source={require('../../assets/icons/settings.png')}></Image>
                 </View>
             </View>
         </View>
     );
 };
-export default HeaderInbox;
+export default HeaderUser;
 const styles = StyleSheet.create({
     header: {
         position: 'relative',

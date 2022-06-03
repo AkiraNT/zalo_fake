@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     },
     item: {
       position: 'relative',
-      marginBottom: 10,
+      margin: 10,
       paddingBottom: 2,
       flexDirection: 'row',
       borderBottomWidth: 1,
